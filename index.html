@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoffeeLand</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --coffee-bg: #2e1f1b;
+      --coffee-light: #a17c6b;
+      --coffee-cream: #f7efe6;
+      --coffee-text: #fdfdfd;
+      --coffee-accent: #c69c72;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--coffee-bg);
+      color: var(--coffee-text);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 20px 10%;
+      background: var(--coffee-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: var(--coffee-accent);
+    }
+
+    nav a {
+      color: var(--coffee-text);
+      margin-left: 25px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--coffee-accent);
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1605522314835-84e76f86d1f6?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(46, 31, 27, 0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      color: var(--coffee-cream);
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      background: var(--coffee-accent);
+      border: none;
+      border-radius: 30px;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #a37a55;
+    }
+
+    section {
+      padding: 80px 10%;
+      background: var(--coffee-bg);
+    }
+
+    .section-light {
+      background: var(--coffee-cream);
+      color: var(--coffee-bg);
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: space-around;
+    }
+
+    .feature {
+      flex: 1 1 250px;
+      background: var(--coffee-light);
+      padding: 30px;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature h3 {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background: #1e1411;
+      color: #bbb;
+      text-align: center;
+      padding: 30px 10%;
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .features {
+        flex-direction: column;
+      }
+
+      nav a {
+        margin-left: 15px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CoffeeLand</h1>
+    <nav>
+      <a href="#about">О нас</a>
+      <a href="#menu">Меню</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Погрузиcь в мир кофе</h2>
+      <p>Лучшие кофейные зерна, уютная атмосфера и забота в каждой чашке.</p>
+      <button class="btn">Посмотреть меню</button>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2 style="margin-bottom: 30px;">О нас</h2>
+    <p>Мы — команда, влюблённая в кофе. Наши бариста подбирают лучшие сорта, чтобы каждая чашка была идеальной. У нас уютно, тепло и вкусно.</p>
+  </section>
+
+  <section id="menu" class="section-light">
+    <h2 style="margin-bottom: 40px;">Наше меню</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>Классика</h3>
+        <p>Эспрессо, американо, латте — в лучших традициях итальянского кофе.</p>
+      </div>
+      <div class="feature">
+        <h3>Авторские напитки</h3>
+        <p>Лавандовый раф, апельсиновый капучино и другие эксклюзивные вкусы.</p>
+      </div>
+      <div class="feature">
+        <h3>Выпечка</h3>
+        <p>Круассаны, брауни, чизкейки — всё, что нужно для сладкой паузы.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 style="margin-bottom: 20px;">Связаться с нами</h2>
+    <p>Email: hello@coffeeland.kz</p>
+    <p>Instagram: @coffeeland.kz</p>
+    <p>Телефон: +7 (777) 123-45-67</p>
+  </section>
+
+  <footer>
+    © 2025 CoffeeLand. Все права защищены.
+  </footer>
+</body>
+</html>
