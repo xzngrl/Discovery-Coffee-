@@ -1,227 +1,172 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
+<!DOCTYPE html><html lang="ru"><head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CoffeeLand</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <title>Discovery Coffee</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
   <style>
-    :root {
-      --coffee-bg: #2e1f1b;
-      --coffee-light: #a17c6b;
-      --coffee-cream: #f7efe6;
-      --coffee-text: #fdfdfd;
-      --coffee-accent: #c69c72;
+    html {
+      scroll-behavior: smooth;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    .transition-theme {
+      transition: background-color 0.5s, color 0.5s;
     }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background-color: var(--coffee-bg);
-      color: var(--coffee-text);
-      line-height: 1.6;
-    }
-
-    header {
-      padding: 20px 10%;
-      background: var(--coffee-bg);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
+    #scrollToTopBtn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #4B5563;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 9999px;
+      display: none;
+      cursor: pointer;
       z-index: 1000;
     }
-
-    header h1 {
-      font-size: 1.8rem;
-      color: var(--coffee-accent);
-    }
-
-    nav a {
-      color: var(--coffee-text);
-      margin-left: 25px;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: var(--coffee-accent);
-    }
-
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      height: 100vh;
-      background: url('https://images.unsplash.com/photo-1605522314835-84e76f86d1f6?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
-      position: relative;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(46, 31, 27, 0.6);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      color: var(--coffee-cream);
-      animation: fadeInUp 1s ease-out;
-    }
-
-    .hero h2 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-    }
-
-    .btn {
-      padding: 12px 30px;
-      background: var(--coffee-accent);
-      border: none;
-      border-radius: 30px;
-      font-weight: bold;
-      color: #fff;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .btn:hover {
-      background: #a37a55;
-    }
-
-    section {
-      padding: 80px 10%;
-      background: var(--coffee-bg);
-    }
-
-    .section-light {
-      background: var(--coffee-cream);
-      color: var(--coffee-bg);
-    }
-
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: space-around;
-    }
-
-    .feature {
-      flex: 1 1 250px;
-      background: var(--coffee-light);
-      padding: 30px;
-      border-radius: 15px;
-      transition: transform 0.3s ease;
-    }
-
-    .feature:hover {
-      transform: translateY(-10px);
-    }
-
-    .feature h3 {
-      margin-bottom: 10px;
-    }
-
-    footer {
-      background: #1e1411;
-      color: #bbb;
-      text-align: center;
-      padding: 30px 10%;
-      font-size: 0.9rem;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero h2 {
-        font-size: 2rem;
-      }
-
-      .features {
-        flex-direction: column;
-      }
-
-      nav a {
-        margin-left: 15px;
-        font-size: 0.95rem;
-      }
-    }
   </style>
-</head>
-<body>
-  <header>
-    <h1>CoffeeLand</h1>
-    <nav>
-      <a href="#about">О нас</a>
-      <a href="#menu">Меню</a>
-      <a href="#contact">Контакты</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div class="hero-content">
-      <h2>Погрузиcь в мир кофе</h2>
-      <p>Лучшие кофейные зерна, уютная атмосфера и забота в каждой чашке.</p>
-      <button class="btn">Посмотреть меню</button>
+</head><body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-theme font-[Montserrat]">
+  <!-- Навигация -->
+  <header class="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 shadow-md z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold">Discovery Coffee</h1>
+      <nav class="space-x-4">
+        <a href="#about" class="hover:underline">О нас</a>
+        <a href="#menu" class="hover:underline">Меню</a>
+        <a href="#gallery" class="hover:underline">Галерея</a>
+        <a href="#contact" class="hover:underline">Контакты</a>
+        <button onclick="toggleTheme()">🌗</button>
+        <button onclick="toggleLang()">🌐</button>
+        <button onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' })" class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700">Заказать</button>
+      </nav>
     </div>
-  </section>
-
-  <section id="about">
-    <h2 style="margin-bottom: 30px;">О нас</h2>
-    <p>Мы — команда, влюблённая в кофе. Наши бариста подбирают лучшие сорта, чтобы каждая чашка была идеальной. У нас уютно, тепло и вкусно.</p>
-  </section>
-
-  <section id="menu" class="section-light">
-    <h2 style="margin-bottom: 40px;">Наше меню</h2>
-    <div class="features">
-      <div class="feature">
-        <h3>Классика</h3>
-        <p>Эспрессо, американо, латте — в лучших традициях итальянского кофе.</p>
+  </header>  <main class="pt-20">
+    <!-- О нас -->
+    <section id="about" class="max-w-5xl mx-auto text-center py-16 px-4" data-aos="fade-up">
+      <h2 class="text-3xl font-bold mb-4">Добро пожаловать в Discovery Coffee</h2>
+      <p class="text-lg">Уютная атмосфера, ароматный кофе и десерты собственного приготовления ждут вас каждый день.</p>
+    </section><!-- Меню -->
+<section id="menu" class="bg-gray-100 dark:bg-gray-800 py-16" data-aos="fade-up">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-8">Меню</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="p-4 bg-white dark:bg-gray-700 rounded-xl shadow">
+        <h3 class="text-xl font-bold">Кофе</h3>
+        <ul class="mt-2 space-y-1">
+          <li>Эспрессо — 700₸</li>
+          <li>Американо — 800₸</li>
+          <li>Латте — 1000₸</li>
+          <li>Капучино — 1000₸</li>
+        </ul>
       </div>
-      <div class="feature">
-        <h3>Авторские напитки</h3>
-        <p>Лавандовый раф, апельсиновый капучино и другие эксклюзивные вкусы.</p>
+      <div class="p-4 bg-white dark:bg-gray-700 rounded-xl shadow">
+        <h3 class="text-xl font-bold">Десерты</h3>
+        <ul class="mt-2 space-y-1">
+          <li>Чизкейк — 1200₸</li>
+          <li>Тирамису — 1300₸</li>
+          <li>Маффин — 600₸</li>
+          <li>Круассан — 700₸</li>
+        </ul>
       </div>
-      <div class="feature">
-        <h3>Выпечка</h3>
-        <p>Круассаны, брауни, чизкейки — всё, что нужно для сладкой паузы.</p>
+      <div class="p-4 bg-white dark:bg-gray-700 rounded-xl shadow">
+        <h3 class="text-xl font-bold">Чай и другое</h3>
+        <ul class="mt-2 space-y-1">
+          <li>Чёрный чай — 600₸</li>
+          <li>Зелёный чай — 600₸</li>
+          <li>Какао — 900₸</li>
+          <li>Матча — 1300₸</li>
+        </ul>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="contact">
-    <h2 style="margin-bottom: 20px;">Связаться с нами</h2>
-    <p>Email: hello@coffeeland.kz</p>
-    <p>Instagram: @coffeeland.kz</p>
-    <p>Телефон: +7 (777) 123-45-67</p>
-  </section>
+<!-- Галерея -->
+<section id="gallery" class="py-16" data-aos="fade-up">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-8">Галерея</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <img src="https://source.unsplash.com/featured/?coffee" class="rounded-xl shadow-lg" alt="Кофе" />
+      <img src="https://source.unsplash.com/featured/?cafe" class="rounded-xl shadow-lg" alt="Кафе" />
+      <img src="https://source.unsplash.com/featured/?barista" class="rounded-xl shadow-lg" alt="Бариста" />
+      <img src="https://source.unsplash.com/featured/?dessert" class="rounded-xl shadow-lg" alt="Десерт" />
+      <img src="https://source.unsplash.com/featured/?latte" class="rounded-xl shadow-lg" alt="Латте" />
+      <img src="https://source.unsplash.com/featured/?coffeeshop" class="rounded-xl shadow-lg" alt="Кофейня" />
+    </div>
+  </div>
+</section>
 
-  <footer>
-    © 2025 CoffeeLand. Все права защищены.
-  </footer>
-</body>
-</html>
+<!-- Контакты -->
+<section id="contact" class="bg-gray-100 dark:bg-gray-800 py-16" data-aos="fade-up">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-4">Контакты</h2>
+    <p class="mb-2">📞 +7 705 123 4567</p>
+    <p class="mb-2">📍 г. Кокшетау, ул. Абая 12</p>
+    <p class="mb-4">📸 <a href="https://instagram.com/discoverycoffee" class="text-blue-600 dark:text-blue-400" target="_blank">@discoverycoffee</a></p>
+    <iframe class="w-full h-64 rounded-xl shadow-lg" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2741.897913000046!2d69.38096411559636!3d51.12638037956868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x424caddc9e38502b%3A0x4d3b30ccf0aa8bc1!2z0JrQsNGA0Log0KHQstC10YDQvdCw!5e0!3m2!1sru!2skz!4v1710000000000" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- Заказать столик -->
+<section id="booking" class="py-16" data-aos="fade-up">
+  <div class="max-w-xl mx-auto text-center">
+    <h2 class="text-3xl font-bold mb-4">Забронировать столик</h2>
+    <p class="mb-6">Оставьте свои данные, и мы вам перезвоним.</p>
+    <form class="space-y-4">
+      <input type="text" placeholder="Имя" class="w-full p-2 rounded border dark:bg-gray-700" required>
+      <input type="tel" placeholder="Телефон" class="w-full p-2 rounded border dark:bg-gray-700" required>
+      <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Отправить</button>
+    </form>
+  </div>
+</section>
+
+  </main><button id="scrollToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">⬆️</button>
+
+  <footer class="text-center py-6 text-sm bg-white dark:bg-gray-900">
+    © 2025 Discovery Coffee. Все права защищены.
+  </footer>  <script>
+    AOS.init();
+
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
+    }
+
+    const translations = {
+      ru: {
+        about: "Добро пожаловать в Discovery Coffee",
+        menu: "Меню",
+        gallery: "Галерея",
+        contacts: "Контакты"
+      },
+      en: {
+        about: "Welcome to Discovery Coffee",
+        menu: "Menu",
+        gallery: "Gallery",
+        contacts: "Contacts"
+      }
+    };
+
+    let currentLang = 'ru';
+    function toggleLang() {
+      currentLang = currentLang === 'ru' ? 'en' : 'ru';
+      document.querySelector('#about h2').innerText = translations[currentLang].about;
+      document.querySelector('#menu h2').innerText = translations[currentLang].menu;
+      document.querySelector('#gallery h2').innerText = translations[currentLang].gallery;
+      document.querySelector('#contact h2').innerText = translations[currentLang].contacts;
+    }
+
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('scrollToTopBtn');
+      if (window.scrollY > 300) {
+        btn.style.display = 'block';
+      } else {
+        btn.style.display = 'none';
+      }
+    });
+  </script></body></html>
